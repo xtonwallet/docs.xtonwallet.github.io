@@ -32,13 +32,13 @@
     <div class="dc-card">
       <div id="react-search-results-root"></div>
       <div id="page-content" class="doc-formatting">
-        <h1 id="Web3-like-library-request-API-based-on-TEPs-100-standard"><a href="#Web3-like-library-request-API-based-on-TEPs-100-standard" class="headerlink" title="Web3-like library request API based on TEPs-100 standard"></a>Web3-like library request API based on TEPs-100 standard</h1><p>The wallet browser extension allows interaction with DApp based on TEPs-100 standard. Full specification places <a target="_blank" rel="noopener" href="https://addmelater.com/">here</a>.</p>
+        <h1 id="Web3-like-library-request-API-based-on-TEPs-standard"><a href="#Web3-like-library-request-API-based-on-TEPs-standard" class="headerlink" title="Web3-like library request API based on TEPs standard"></a>Web3-like library request API based on TEPs standard</h1><p>The wallet browser extension allows interaction with DApp based on TEPs standard. Full specification places <a target="_blank" rel="noopener" href="https://addmelater.com/">here</a>.</p>
 <p><strong>Restrictions</strong></p>
 <ul>
 <li>DApp can’t open more than 15 dialogs simultaneously</li>
 <li>Each request has a life time. If the user won’t be able to confirm or decline the request, after 5 minutes DApp will receive the timeout error</li>
 </ul>
-<h1 id="Demo-page"><a href="#Demo-page" class="headerlink" title="Demo page"></a>Demo page</h1><p>All methods from specification TEPs-100 are available for the testing on <a target="_blank" rel="noopener" href="https://demopage.xtonwallet.com/">demo page</a></p>
+<h1 id="Demo-page"><a href="#Demo-page" class="headerlink" title="Demo page"></a>Demo page</h1><p>All methods from specification TEPs are available for the testing on <a target="_blank" rel="noopener" href="https://demopage.xtonwallet.com/">demo page</a></p>
 <h1 id="Supporting-deep-link"><a href="#Supporting-deep-link" class="headerlink" title="Supporting deep link"></a>Supporting deep link</h1><p>The web extension detects deep links on web pages in the format “ton:&#x2F;&#x2F;transfer&#x2F;address[?amount&#x3D;][&amp;message&#x3D;]” and open the transaction dialog on click event.</p>
 <h1 id="The-most-frequently-used-methods-places-below"><a href="#The-most-frequently-used-methods-places-below" class="headerlink" title="The most frequently used methods places below:"></a>The most frequently used methods places below:</h1><h2 id="wallet-getSdkVersion"><a href="#wallet-getSdkVersion" class="headerlink" title="wallet_getSdkVersion"></a>wallet_getSdkVersion</h2><p>DApp can get TON SDK version that uses by the wallet browser extension.</p>
 <p>use private keys - <strong>no</strong><br>must be allowed - <strong>no</strong><br>required parameters - <strong>no</strong></p>
@@ -46,7 +46,7 @@
 
 <h2 id="wallet-requestPermissions"><a href="#wallet-requestPermissions" class="headerlink" title="wallet_requestPermissions"></a>wallet_requestPermissions</h2><p>DApp can request needed permissions from user. Not all methods demands to be permitted. The all methods, that must be allowed by user, lists below:</p>
 <ul>
-<li><a href="#web3-like-library-request-api-based-on-teps-100-standard">Web3-like library request API based on TEPs-100 standard</a></li>
+<li><a href="#web3-like-library-request-api-based-on-teps-standard">Web3-like library request API based on TEPs standard</a></li>
 <li><a href="#demo-page">Demo page</a></li>
 <li><a href="#supporting-deep-link">Supporting deep link</a></li>
 <li><a href="#the-most-frequently-used-methods-places-below">The most frequently used methods places below:</a><ul>
