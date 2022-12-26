@@ -42,12 +42,18 @@
     <div class="dc-card">
       <div id="react-search-results-root"></div>
       <div id="page-content" class="doc-formatting">
-        <h1 id="Web3-like-library-request-API-based-on-TEPs-standard"><a href="#Web3-like-library-request-API-based-on-TEPs-standard" class="headerlink" title="Web3-like library request API based on TEPs standard"></a>Web3-like library request API based on TEPs standard</h1><p>The wallet browser extension allows interaction with DApp based on TEPs standard. Full specification places <a target="_blank" rel="noopener" href="https://addmelater.com/">here</a>.</p>
+        <h1 id="Web3-like-library-request-API-based-on-TEPs-standard"><a href="#Web3-like-library-request-API-based-on-TEPs-standard" class="headerlink" title="Web3-like library request API based on TEPs standard"></a>Web3-like library request API based on TEPs standard</h1><p>The wallet browser extension allows interaction with DApp based on TEPs standard. Full specification places <a target="_blank" rel="noopener" href="https://github.com/ton-blockchain/TEPs/pull/105">here</a>.</p>
 <p><strong>Restrictions</strong></p>
 <ul>
 <li>DApp can’t open more than 15 dialogs simultaneously</li>
 <li>Each request has a life time. If the user won’t be able to confirm or decline the request, after 5 minutes DApp will receive the timeout error</li>
 </ul>
+<h1 id="Provider-detection"><a href="#Provider-detection" class="headerlink" title="Provider detection"></a>Provider detection</h1><p>To detect if a web page contains the Web3 library request API, you can use this code:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="title function_">typeOf</span>(<span class="variable language_">window</span>.<span class="property">ton</span>) != <span class="string">&quot;undefined&quot;</span> &amp;&amp; <span class="comment">// always must be true</span></span><br><span class="line">    <span class="variable language_">window</span>.<span class="property">ton</span>.<span class="property">isTEPs105</span> == <span class="literal">true</span>) &#123; <span class="comment">// always must be true</span></span><br><span class="line">  <span class="comment">//... your code here</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="variable language_">window</span>.<span class="property">ton</span>.<span class="property">isXTONWallet</span> == <span class="literal">true</span>) &#123; <span class="comment">// if you want to check that wallet is XTON</span></span><br><span class="line">  <span class="comment">//... your code here</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>If you want to detect some extended standard, you have to check if <code>window.ton.isTEPs[standard_number]</code> is true</p>
 <h1 id="Demo-page"><a href="#Demo-page" class="headerlink" title="Demo page"></a>Demo page</h1><p>All methods from specification TEPs are available for the testing on <a target="_blank" rel="noopener" href="https://demopage.xtonwallet.com/">demo page</a></p>
 <h1 id="Supporting-deep-link"><a href="#Supporting-deep-link" class="headerlink" title="Supporting deep link"></a>Supporting deep link</h1><p>The web extension detects deep links on web pages in the format “ton:&#x2F;&#x2F;transfer&#x2F;address[?amount&#x3D;][&amp;message&#x3D;]” and open the transaction dialog on click event.</p>
 <h1 id="The-most-frequently-used-methods-places-below"><a href="#The-most-frequently-used-methods-places-below" class="headerlink" title="The most frequently used methods places below:"></a>The most frequently used methods places below:</h1><h2 id="wallet-getSdkVersion"><a href="#wallet-getSdkVersion" class="headerlink" title="wallet_getSdkVersion"></a>wallet_getSdkVersion</h2><p>DApp can get TON SDK version that uses by the wallet browser extension.</p>
@@ -57,25 +63,26 @@
 <h2 id="wallet-requestPermissions"><a href="#wallet-requestPermissions" class="headerlink" title="wallet_requestPermissions"></a>wallet_requestPermissions</h2><p>DApp can request needed permissions from user. Not all methods demands to be permitted. The all methods, that must be allowed by user, lists below:</p>
 <ul>
 <li><a href="#web3-like-library-request-api-based-on-teps-standard">Web3-like library request API based on TEPs standard</a></li>
+<li><a href="#provider-detection">Provider detection</a></li>
 <li><a href="#demo-page">Demo page</a></li>
 <li><a href="#supporting-deep-link">Supporting deep link</a></li>
 <li><a href="#the-most-frequently-used-methods-places-below">The most frequently used methods places below:</a><ul>
-<li><a href="#wallet-getsdkversion">wallet_getSdkVersion</a></li>
-<li><a href="#wallet-requestpermissions">wallet_requestPermissions</a></li>
-<li><a href="#wallet-getpermissions">wallet_getPermissions</a></li>
-<li><a href="#wallet-watchasset">wallet_watchAsset</a></li>
-<li><a href="#ton-account">ton_account</a></li>
-<li><a href="#ton-endpoint">ton_endpoint</a></li>
-<li><a href="#ton-sendtransaction">ton_sendTransaction</a></li>
-<li><a href="#ton-sendrawtransaction">ton_sendRawTransaction</a></li>
-<li><a href="#ton-signmessage">ton_signMessage</a></li>
-<li><a href="#ton-getnaclboxpublickey">ton_getNaclBoxPublicKey</a></li>
-<li><a href="#ton-getsignature">ton_getSignature</a></li>
-<li><a href="#ton-crypto-generate-random-bytes">ton_crypto_generate_random_bytes</a></li>
-<li><a href="#ton-encryptmessage">ton_encryptMessage</a></li>
-<li><a href="#ton-decryptmessage">ton_decryptMessage</a></li>
-<li><a href="#ton-subscribe">ton_subscribe</a></li>
-<li><a href="#ton-unsubscribe">ton_unsubscribe</a></li>
+<li><a href="#wallet_getsdkversion">wallet_getSdkVersion</a></li>
+<li><a href="#wallet_requestpermissions">wallet_requestPermissions</a></li>
+<li><a href="#wallet_getpermissions">wallet_getPermissions</a></li>
+<li><a href="#wallet_watchasset">wallet_watchAsset</a></li>
+<li><a href="#ton_account">ton_account</a></li>
+<li><a href="#ton_endpoint">ton_endpoint</a></li>
+<li><a href="#ton_sendtransaction">ton_sendTransaction</a></li>
+<li><a href="#ton_sendrawtransaction">ton_sendRawTransaction</a></li>
+<li><a href="#ton_signmessage">ton_signMessage</a></li>
+<li><a href="#ton_getnaclboxpublickey">ton_getNaclBoxPublicKey</a></li>
+<li><a href="#ton_getsignature">ton_getSignature</a></li>
+<li><a href="#ton_crypto_generate_random_bytes">ton_crypto_generate_random_bytes</a></li>
+<li><a href="#ton_encryptmessage">ton_encryptMessage</a></li>
+<li><a href="#ton_decryptmessage">ton_decryptMessage</a></li>
+<li><a href="#ton_subscribe">ton_subscribe</a></li>
+<li><a href="#ton_unsubscribe">ton_unsubscribe</a></li>
 </ul>
 </li>
 <li><a href="#events">Events</a><ul>
